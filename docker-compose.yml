@@ -1,0 +1,13 @@
+services:
+  agalea:
+    build: .
+    container_name: agalea-web
+    restart: unless-stopped
+    mem_limit: 64m
+    cpus: 0.5
+    networks:
+      - proxy-net
+
+networks:
+  proxy-net:
+    external: true
