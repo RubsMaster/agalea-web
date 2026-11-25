@@ -7,19 +7,26 @@ import coach2 from "@/assets/coach-2.jpg";
 export const WHATSAPP_NUMBER = "526145743625";
 export function whatsappLink(text: string) {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
-};
+}
 export const images = { hero, equipment, team, bars, coach1, coach2 };
 export const instructors = [
   {
     name: "Alejandra Nájera",
-    role: "rol",
+    role: "Socia / Entrenadora",
     photo: coach1,
     bio: "biografia ejemplo: Ex seleccionada nacional con 15 años de experiencia formando gimnastas de nivel competitivo.",
     specialties: ["Viga", "Suelo", "Nivel competitivo"],
   },
   {
     name: "Andrea Macías",
-    role: "Entrenador principal",
+    role: "Socia / Entrenadora",
+    photo: coach2,
+    bio: "Licenciado en Educación Física, especialista en barras asimétricas y preparación física.",
+    specialties: ["Barras", "Salto", "Acondicionamiento"],
+  },
+  {
+    name: "Elizabeth Macías",
+    role: "Socia / Entrenadora",
     photo: coach2,
     bio: "Licenciado en Educación Física, especialista en barras asimétricas y preparación física.",
     specialties: ["Barras", "Salto", "Acondicionamiento"],
@@ -28,8 +35,8 @@ export const instructors = [
 
 export const equipmentList = [
   {
-    name: "Practicable de suelo 12×12 m",
-    desc: "Piso con resortes de medidas oficiales para rutinas completas.",
+    name: "Practicable de suelo",
+    desc: "Piso con resortes para rutinas completas.",
   },
   {
     name: "Barras asimétricas",
@@ -133,47 +140,71 @@ export function formatAlbumDate(date: string): string {
   return Number.isNaN(parsed.getTime()) ? date : albumDateFormatter.format(parsed);
 }
 
-export const programs = [
+export const gymnasticsLevels = [
   "Baby Gym",
-  "Iniciación",
-  "Pre-equipo",
-  "Equipo competitivo",
-  "Adultos",
+  "Nivel 1",
+  "Nivel 2",
+  "Nivel 3",
+  "Nivel 4 y 5",
 ] as const;
 
-export const plans = [
+export const programs = [
+  "Gimnasia entre semana · Baby Gym",
+  "Gimnasia entre semana · Nivel 1",
+  "Gimnasia entre semana · Nivel 2",
+  "Gimnasia entre semana · Nivel 3",
+  "Gimnasia entre semana · Nivel 4 y 5",
+  "Gimnasia sabatina (3 a 17 años)",
+  "Parkour (niños 6 a 12 años)",
+] as const;
+
+export interface Plan {
+  name: string;
+  ages: string;
+  price: number;
+  enrollment: number;
+  freq: string;
+  features: string[];
+  featured?: boolean;
+}
+
+export const plans: Plan[] = [
   {
-    name: "Baby Gym",
-    ages: "3 a 5 años",
-    price: 900,
-    freq: "2 clases por semana · 45 min",
-    features: ["Motricidad y coordinación", "Grupos de máximo 8", "Juego guiado"],
-  },
-  {
-    name: "Iniciación",
-    ages: "6 a 10 años",
-    price: 1200,
-    freq: "3 clases por semana · 1 h",
-    features: ["Fundamentos en los 4 aparatos", "Evaluación trimestral", "Uniforme de práctica"],
+    name: "Gimnasia entre semana",
+    ages: "Niñas de 3 a 17 años",
+    price: 950,
+    enrollment: 300,
+    freq: "Lunes a viernes (5 días) · 2 h por turno",
+    features: [
+      "Turnos por nivel: 3:15–5:15, 5:00–7:00 y 7:00–9:00 pm",
+      "Niveles: Baby Gym, Nivel 1, Nivel 2, Nivel 3, Nivel 4 y 5",
+      "Asistencia los 5 días de la semana",
+    ],
     featured: true,
   },
   {
-    name: "Pre-equipo",
-    ages: "8 a 14 años",
-    price: 1600,
-    freq: "4 clases por semana · 2 h",
+    name: "Parkour",
+    ages: "Niños de 6 a 12 años",
+    price: 800,
+    enrollment: 300,
+    freq: "Lunes, miércoles y viernes · 7:30 a 9:00 pm",
     features: [
-      "Preparación para competir",
-      "Acondicionamiento físico",
-      "Seguimiento personalizado",
+      "3 clases por semana de 1 h 30 min",
+      "Grupo exclusivo para niños",
+      "Agilidad, saltos y control corporal",
     ],
   },
   {
-    name: "Equipo competitivo",
-    ages: "Por selección",
-    price: 2400,
-    freq: "5 clases por semana · 3 h",
-    features: ["Calendario de competencias", "Coreografía de suelo", "Preparación mental"],
+    name: "Gimnasia sabatina",
+    ages: "Niñas de 3 a 17 años",
+    price: 500,
+    enrollment: 300,
+    freq: "Sábados · 1 clase de 3 h (9:00 am – 12:00 pm)",
+    features: [
+      "Mismos niveles de entre semana (Baby Gym a Nivel 4 y 5)",
+      "Sesión única sabatina de 3 horas",
+      "Ideal si no pueden asistir entre semana",
+    ],
   },
 ];
 
@@ -186,41 +217,38 @@ export const scheduleDays = [
   "Sábado",
 ] as const;
 
+const weekdaySlots = "03:15 p.m. – 05:15 p.m.\n05:00 p.m. – 07:00 p.m.\n07:00 p.m. – 09:00 p.m.";
+
 export const schedule: {
   program: string;
+  note?: string;
   slots: Partial<Record<(typeof scheduleDays)[number], string>>;
 }[] = [
   {
-    program: "Baby Gym",
-    slots: { Martes: "16:00 – 16:45", Jueves: "16:00 – 16:45", Sábado: "10:00 – 10:45" },
-  },
-  {
-    program: "Iniciación",
+    program: "Gimnasia entre semana",
+    note: "Niñas 3–17 años · Todos los niveles",
     slots: {
-      Lunes: "16:00 – 17:00",
-      Miércoles: "16:00 – 17:00",
-      Viernes: "16:00 – 17:00",
-      Sábado: "11:00 – 12:00",
+      Lunes: weekdaySlots,
+      Martes: weekdaySlots,
+      Miércoles: weekdaySlots,
+      Jueves: weekdaySlots,
+      Viernes: weekdaySlots,
     },
   },
   {
-    program: "Pre-equipo",
+    program: "Parkour",
+    note: "Niños 6–12 años",
     slots: {
-      Lunes: "17:00 – 19:00",
-      Martes: "17:00 – 19:00",
-      Jueves: "17:00 – 19:00",
-      Viernes: "17:00 – 19:00",
+      Lunes: "07:30 p.m. – 09:00 p.m.",
+      Miércoles: "07:30 p.m. – 09:00 p.m.",
+      Viernes: "07:30 p.m. – 09:00 p.m.",
     },
   },
   {
-    program: "Equipo competitivo",
+    program: "Gimnasia sabatina",
+    note: "Niñas 3–17 años · Todos los niveles",
     slots: {
-      Lunes: "15:00 – 18:00",
-      Martes: "15:00 – 18:00",
-      Miércoles: "15:00 – 18:00",
-      Jueves: "15:00 – 18:00",
-      Viernes: "15:00 – 18:00",
+      Sábado: "09:00 a.m. – 12:00 p.m.",
     },
   },
-  { program: "Adultos", slots: { Martes: "19:30 – 20:30", Jueves: "19:30 – 20:30" } },
 ];

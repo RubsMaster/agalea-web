@@ -53,8 +53,8 @@ export function SiteFooter() {
         </div>
         <div className="text-sm opacity-80">
           <p className="font-semibold opacity-100">Horario de oficina</p>
-          <p>Lunes a viernes 15:00 – 21:00</p>
-          <p>Sábado 9:00 – 13:00</p>
+          <p>Lunes a viernes 03:00 p.m. – 21:00 p.m.</p>
+          <p>Sábado 9:00 a.m. – 12:00 p.m.</p>
         </div>
         <div className="flex flex-col gap-2 text-sm">
           <Link to="/horarios" className="opacity-80 hover:opacity-100">Planes y precios</Link>

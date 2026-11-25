@@ -27,7 +27,11 @@ export const Route = createFileRoute("/clase-muestra")({
 const schema = z.object({
   parent_name: z.string().trim().min(1, "Escribe tu nombre").max(100),
   student_name: z.string().trim().min(1, "Escribe el nombre del alumno").max(100),
-  student_age: z.coerce.number().int().min(2, "Edad no válida").max(70, "Edad no válida"),
+  student_age: z.coerce
+    .number()
+    .int()
+    .min(3, "Edad no válida (3 a 17 años)")
+    .max(17, "Edad no válida (3 a 17 años)"),
   phone: z.string().trim().min(7, "Teléfono no válido").max(25),
   email: z.string().trim().email("Correo no válido").max(255).or(z.literal("")),
   program: z.enum(programs),
@@ -129,8 +133,8 @@ function ClaseMuestra() {
                 <input
                   name="student_age"
                   type="number"
-                  min={2}
-                  max={70}
+                  min={3}
+                  max={17}
                   required
                   className={`${field} mt-1`}
                 />
