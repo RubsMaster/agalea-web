@@ -1,0 +1,2 @@
+- Site content (plans, schedule, instructors, albums, WhatsApp number) lives in src/lib/site-data.ts so pages stay data-driven.
+- The app is purely static (no database or backend); trial class requests open WhatsApp with the formatted form details.
