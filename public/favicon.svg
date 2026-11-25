@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="agalea-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#133d4a" />
+      <stop offset="100%" stop-color="#1b848c" />
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#agalea-bg)" />
+  <path
+    d="M19 48 31.5 16h3.4L47 48h-5.6l-3.1-8.5H27.7L24.6 48H19Zm10.3-13.2h7.4L33 24l-3.7 10.8Z"
+    fill="#f8fbfb"
+  />
+  <circle cx="48.5" cy="45.5" r="3.5" fill="#eab354" />
+</svg>

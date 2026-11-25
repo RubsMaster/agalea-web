@@ -146,6 +146,7 @@ export const gymnasticsLevels = [
   "Nivel 2",
   "Nivel 3",
   "Nivel 4 y 5",
+  "Libres"
 ] as const;
 
 export const programs = [
@@ -154,6 +155,7 @@ export const programs = [
   "Gimnasia entre semana · Nivel 2",
   "Gimnasia entre semana · Nivel 3",
   "Gimnasia entre semana · Nivel 4 y 5",
+  "Gimnasia entre semana · Libre",
   "Gimnasia sabatina (3 a 17 años)",
   "Parkour (niños 6 a 12 años)",
 ] as const;
@@ -177,7 +179,7 @@ export const plans: Plan[] = [
     freq: "Lunes a viernes (5 días) · 2 h por turno",
     features: [
       "Turnos por nivel: 3:15–5:15, 5:00–7:00 y 7:00–9:00 pm",
-      "Niveles: Baby Gym, Nivel 1, Nivel 2, Nivel 3, Nivel 4 y 5",
+      "Niveles: Baby Gym, Nivel 1, Nivel 2, Nivel 3, Nivel 4 y 5, Libre",
       "Asistencia los 5 días de la semana",
     ],
     featured: true,
@@ -201,7 +203,7 @@ export const plans: Plan[] = [
     enrollment: 300,
     freq: "Sábados · 1 clase de 3 h (9:00 am – 12:00 pm)",
     features: [
-      "Mismos niveles de entre semana (Baby Gym a Nivel 4 y 5)",
+      "Niveles: Baby Gym, Nivel 1, Nivel 2, Nivel 3, Nivel 4 y 5, Libre",
       "Sesión única sabatina de 3 horas",
       "Ideal si no pueden asistir entre semana",
     ],
